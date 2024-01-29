@@ -19,14 +19,12 @@ MAIL_SECTION_COORDINATES = (1238, 591)
 send_mail = False
 cancel_mail = False
 
-
 def open_mail_app(app_name=MAIL_APP_NAME):
     pyautogui.press('win')
     time.sleep(WAIT_TIME_SHORT)
     pyautogui.write(app_name)
     pyautogui.press('enter')
     time.sleep(WAIT_TIME_LONG)
-
 
 def locate_and_click(image_path, message):
     location = None
@@ -44,10 +42,8 @@ def locate_and_click(image_path, message):
     else:
         print(f"{message} not found on the screen. Check the image path and try again.")
 
-
 def open_compose_section():
     locate_and_click(COMPOSE_BUTTON_IMAGE_PATH, "Compose button")
-
 
 def listen_continuous():
     recognizer = sr.Recognizer()
@@ -70,7 +66,6 @@ def listen_continuous():
                 exit()
 
     return None
-
 
 def type_to_content():
     global send_mail, cancel_mail  # Declare the variables as global
@@ -147,14 +142,11 @@ def type_to_content():
     send_mail = False
     cancel_mail = False
 
-
 def send_mail_function():
     locate_and_click(SEND_BUTTON_IMAGE_PATH, "Send button")
 
-
 def cancel_mail_function():
     locate_and_click(CANCEL_BUTTON_IMAGE_PATH, "Cancel button")
-
 
 def execute_command(command):
     command = command.lower()  # Convert the command to lowercase for case-insensitive comparison
@@ -176,7 +168,6 @@ def execute_command(command):
         print("Stop execution command detected. Exiting...")
         exit()
 
-
 def main():
     print("Waiting for 'open mail' command...")
     while True:
@@ -190,7 +181,6 @@ def main():
         if command:
             print(f"Command received: {command}")
             execute_command(command)
-
 
 if __name__ == "__main__":
     main()
